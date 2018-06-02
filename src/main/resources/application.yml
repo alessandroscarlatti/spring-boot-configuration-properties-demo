@@ -1,0 +1,73 @@
+connections:
+  pas:
+    addresses:
+    user:
+    password:
+    virtual-host:
+  print:
+    addresses:
+    user:
+    password:
+    virtual-host:
+  olbilling:
+    addresses:
+    user:
+    password:
+    virtual-host:
+
+penguin1: &penguin1  # &id001 works, what about sillyPenguin1
+  name: "Phil"
+  age: 2
+
+mapContainer1:
+  penguins:
+    phil1:
+      name: "Phil I"
+      age: 1
+    phil2:
+      name: "Phil II"
+      age: 2
+
+penguinsList1:  # does not work because the bean itself is a list...
+  -
+    name: "Phillip I"
+    age: 1
+  -
+    name: "Phillip II"
+    age: 2
+
+listContainer1:  # works, perhaps because the list is INSIDE the container.
+  penguins:
+    - name: "Phillip I"
+      age: 1
+    - <<: *penguin1  #overwrite some properties of penguin1
+      age: 3
+
+listContainer2:  # works, but must use commas inside the braces and brackets.
+  penguins:
+    -
+      name: "Phillip I"
+      age: 1
+    -
+      name: "Phillip II"
+      age: 2
+
+listContainer3:  # works, but must use commas inside the braces and brackets.
+  penguins: [
+    {
+      name: "Phillip I",
+      age: 1
+    },
+    {
+      name: "Phillip II",
+      age: 2
+    }
+  ]
+
+listContainer4:  # works, perhaps because the list is INSIDE the container.
+  penguins:
+    - name: "Phillip I"
+      age: 1
+    - <<: *penguin1  #overwrite some properties of penguin1
+      age: 3
+
